@@ -1,0 +1,671 @@
+/* ==UserStyle==
+@name           old reddit
+@namespace      leroy.oldreddit
+@version        0.7.0
+@description    old reddit look for today's reddit. needs the old reddit userscript, which rebuilds the page as old reddit
+@author         leroy
+@license        MIT
+==/UserStyle== */
+
+@-moz-document regexp("https?://(www\\.|new\\.)?reddit\\.com/.*") {
+@layer oldreddit {
+html.oldreddit:not(.r9-old) {height:100%;}
+html.oldreddit:not(.r9-old) body, html.oldreddit:not(.r9-old) div, html.oldreddit:not(.r9-old) dl, html.oldreddit:not(.r9-old) dt, html.oldreddit:not(.r9-old) dd, html.oldreddit:not(.r9-old) ul, html.oldreddit:not(.r9-old) ol, html.oldreddit:not(.r9-old) li, html.oldreddit:not(.r9-old) h1, html.oldreddit:not(.r9-old) h2, html.oldreddit:not(.r9-old) h3, html.oldreddit:not(.r9-old) h4, html.oldreddit:not(.r9-old) h5, html.oldreddit:not(.r9-old) h6, html.oldreddit:not(.r9-old) pre, html.oldreddit:not(.r9-old) form, html.oldreddit:not(.r9-old) fieldset, html.oldreddit:not(.r9-old) input, html.oldreddit:not(.r9-old) p, html.oldreddit:not(.r9-old) blockquote, html.oldreddit:not(.r9-old) th, html.oldreddit:not(.r9-old) td, html.oldreddit:not(.r9-old) iframe {margin:0; padding:0;}
+html.oldreddit:not(.r9-old) table {border-collapse:collapse;}
+html.oldreddit:not(.r9-old) fieldset, html.oldreddit:not(.r9-old) img {border:0;}
+html.oldreddit:not(.r9-old) address, html.oldreddit:not(.r9-old) caption, html.oldreddit:not(.r9-old) cite, html.oldreddit:not(.r9-old) code, html.oldreddit:not(.r9-old) dfn, html.oldreddit:not(.r9-old) em, html.oldreddit:not(.r9-old) strong, html.oldreddit:not(.r9-old) th, html.oldreddit:not(.r9-old) var {font-style:normal; font-weight:normal;}
+html.oldreddit:not(.r9-old) ol, html.oldreddit:not(.r9-old) ul {list-style:none;}
+html.oldreddit:not(.r9-old) caption, html.oldreddit:not(.r9-old) th {text-align:left;}
+html.oldreddit:not(.r9-old) h1, html.oldreddit:not(.r9-old) h2, html.oldreddit:not(.r9-old) h3, html.oldreddit:not(.r9-old) h4, html.oldreddit:not(.r9-old) h5, html.oldreddit:not(.r9-old) h6 {font-size:100%;}
+html.oldreddit:not(.r9-old) q:before, html.oldreddit:not(.r9-old) q:after {content:'';}
+html.oldreddit:not(.r9-old) body {font:normal x-small verdana, arial, helvetica, sans-serif; background-color:white; z-index:1;}
+html.oldreddit:not(.r9-old) input[type=hidden] {position:absolute;}
+html.oldreddit:not(.r9-old) h1 {font-size:18px; font-weight: normal; margin: 10px 0}
+html.oldreddit:not(.r9-old) h2 {color:#369; font-size: 13px;}
+html.oldreddit:not(.r9-old) h2 a {text-decoration:none}
+html.oldreddit:not(.r9-old) h2 a:visited {color:#369}
+html.oldreddit:not(.r9-old) h2 a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) h3 {font-size:110%;}
+html.oldreddit:not(.r9-old) a img {border:0 none;}
+html.oldreddit:not(.r9-old) a {text-decoration:none; color: #369;}
+html.oldreddit:not(.r9-old) .rounded {-moz-border-radius:7px; -webkit-border-radius:7px;}
+html.oldreddit:not(.r9-old) .rounded .morelink {-webkit-border-top-right-radius:6px; -moz-border-radius-topright:6px;}
+html.oldreddit:not(.r9-old) div.autosize {display:table; width: 1px}
+html.oldreddit:not(.r9-old) div.autosize > div {display:table-cell;}
+html.oldreddit:not(.r9-old) input.txt {background-color:#f7f7f7; border:1px solid #369;}
+html.oldreddit:not(.r9-old) input[type=checkbox], html.oldreddit:not(.r9-old) input[type=radio] {margin-top:.4em;}
+html.oldreddit:not(.r9-old) .iform th {text-align:right; color: black; font-weight: normal; text-transform: lowercase;}
+html.oldreddit:not(.r9-old) .wrong {color:red; font-weight: normal}
+html.oldreddit:not(.r9-old) .subform input.text {width:25em}
+html.oldreddit:not(.r9-old) .subform textarea.text {width:25em}
+html.oldreddit:not(.r9-old) .subform label {margin:0 5px 0 5px}
+html.oldreddit:not(.r9-old) .subform td {padding:0px 5px 5px 0}
+html.oldreddit:not(.r9-old) .subform td.nopadding {padding:0px}
+html.oldreddit:not(.r9-old) .nowrap {white-space:nowrap;}
+html.oldreddit:not(.r9-old) .leftpad {padding-left:1em}
+html.oldreddit:not(.r9-old) .nomargin {margin:0px}
+html.oldreddit:not(.r9-old) .nopadding {padding:0px}
+html.oldreddit:not(.r9-old) .hover a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .selected {font-weight:bold;}
+html.oldreddit:not(.r9-old) .flat-list {list-style-type:none; display: inline;}
+html.oldreddit:not(.r9-old) .flat-list li {display:inline;}
+html.oldreddit:not(.r9-old) .flat-list form {display:inline;}
+html.oldreddit:not(.r9-old) .flat-list .selected a {color:orangered;}
+html.oldreddit:not(.r9-old) ul.flat-vert {text-align:left;}
+html.oldreddit:not(.r9-old) .flat-vert .separator {margin:0}
+html.oldreddit:not(.r9-old) .flat-vert.title {font-family:helvetica,arial,verdana,sans-serif; color:#777; font-size:18px; font-weight:normal; margin-bottom:5px;}
+html.oldreddit:not(.r9-old) .separator {color:gray; margin: 0px .7ex 0px .7ex}
+html.oldreddit:not(.r9-old) .pref-lang {font-weight:bold;}
+html.oldreddit:not(.r9-old) .pref {font-weight:bold;}
+html.oldreddit:not(.r9-old) #header {border-bottom:1px solid #5f99cf; position:relative; background-color:#cee3f8; z-index:99;}
+html.oldreddit:not(.r9-old) #header-img {margin-top:2px;}
+html.oldreddit:not(.r9-old) #header-top {position:absolute; right:5px;}
+html.oldreddit:not(.r9-old) #header-bottom-left {font-size:larger;}
+html.oldreddit:not(.r9-old) #header-bottom-right {position:absolute; right:0px; bottom:0px; background-color:#EFF7FF; padding:4px; -moz-border-radius-topleft:7px; -webkit-border-top-left-radius:7px;}
+html.oldreddit:not(.r9-old) #mail img {position:relative; top: 2px}
+html.oldreddit:not(.r9-old) .user {color:gray;}
+html.oldreddit:not(.r9-old) .pagename {font-weight:bold; margin-right:1ex; font-variant:small-caps; font-size:1.2em;}
+html.oldreddit:not(.r9-old) .pagename a {color:black;}
+html.oldreddit:not(.r9-old) .redditname {}
+html.oldreddit:not(.r9-old) .newpagelink {padding:3px 5px; background-color:#ff9;}
+html.oldreddit:not(.r9-old) .dropdown {cursor:default; display:inline; position:relative;}
+html.oldreddit:not(.r9-old) .drop-choices.inuse {display:block;}
+html.oldreddit:not(.r9-old) .drop-choices {position:absolute; left:0px; border:1px solid gray; z-index:100; background-color:white; white-space:nowrap; line-height:normal; margin-top:1px; display:none;}
+html.oldreddit:not(.r9-old) .drop-choices a.choice {cursor:pointer; padding:0px 3px 0px 3px; display:block;}
+html.oldreddit:not(.r9-old) .drop-choices a.choice:hover {background-color:#c7def7;}
+html.oldreddit:not(.r9-old) .dropdown.heavydrop .selected {background:white url("data:image/gif;base64,R0lGODlhFQAQAIABAAAAAP///yH5BAEAAAEALAAAAAAVABAAAAIajI+py+0Po5wO2IvByzhyLWVUcI0GaKbqOhUAOw==") no-repeat scroll center right; border:1px solid gray; padding:2px; padding-right:23px; padding-left:5px; font-weight:bold;}
+html.oldreddit:not(.r9-old) .dropdown.lightdrop .selected {position:relative; background:transparent url("data:image/gif;base64,R0lGODlhFQAQAIABAICAgP///yH5BAEAAAEALAAAAAAVABAAAAIajI+py+0Po5wO2IvByzhyLWVUcI0GaKbqOhUAOw==") no-repeat scroll center right; padding-right:21px; text-decoration:underline; color:gray;}
+html.oldreddit:not(.r9-old) .drop-choices.lightdrop {margin-top:2px;}
+html.oldreddit:not(.r9-old) .dropdown.tabdrop .selected {position:relative; background:white url("data:image/gif;base64,R0lGODlhFQAQAIABAICAgP///yH5BAEAAAEALAAAAAAVABAAAAIajI+py+0Po5wO2IvByzhyLWVUcI0GaKbqOhUAOw==") no-repeat scroll center right; padding:2px 21px 1px 5px; margin-left:3px; border:1px solid #5f99cf; border-bottom:none; color:orangered;}
+html.oldreddit:not(.r9-old) .dropdown.tabdrop .selected.title {background-color:#eff7ff; color:#369; padding-bottom:0; border:none;}
+html.oldreddit:not(.r9-old) .drop-choices.tabdrop {margin-top:2px;}
+html.oldreddit:not(.r9-old) .dropdown-title.tabdrop {display:none}
+html.oldreddit:not(.r9-old) .tabmenu {list-style-type:none; white-space:nowrap; display:inline;}
+html.oldreddit:not(.r9-old) .tabmenu li {display:inline; font-weight:bold; margin:0px 3px; padding:2px 6px 0px 6px; background-color:#eff7ff;}
+html.oldreddit:not(.r9-old) .tabmenu li.selected {padding:0;}
+html.oldreddit:not(.r9-old) .tabmenu li.selected a {color:orangered; padding:2px 6px 1px 6px; background-color:white; border:1px solid #5f99cf; border-bottom:1px solid white; z-index:100;}
+html.oldreddit:not(.r9-old) #search input[type=text] {border:1px solid gray; font-size:18px; width:295px; padding:2px;}
+html.oldreddit:not(.r9-old) .content {z-index:1; margin:7px 5px 0px 5px;}
+html.oldreddit:not(.r9-old) .content .spacer {margin-bottom:5px}
+html.oldreddit:not(.r9-old) .state-button {display:inline}
+html.oldreddit:not(.r9-old) .side {float:right; background-color:white; margin:0px 5px 0 5px; width:300px;}
+html.oldreddit:not(.r9-old) .side .spacer {margin:7px 0;}
+html.oldreddit:not(.r9-old) .morelink {background-color:#FFFFFF; color:#369; display:block; font-size:150%; font-weight:bold; letter-spacing:-1px; padding:5px 10px; text-transform:uppercase; border:1px solid #fff;}
+html.oldreddit:not(.r9-old) .morelink.blah:hover {background-color:#fff; color:#369;}
+html.oldreddit:not(.r9-old) .morelink.blah {background-color:#369; color:#fff; border:1px solid #fff;}
+html.oldreddit:not(.r9-old) .morelink:hover {color:#fff; background-color:#369; border:1px solid #369;}
+html.oldreddit:not(.r9-old) .sidebox {border:1px solid gray; padding-left:44px;}
+html.oldreddit:not(.r9-old) .sidebox .spacer {margin:0 0 5px 0}
+html.oldreddit:not(.r9-old) .sidebox.create {background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAIAAAA5y6cSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABEVJREFUeNqsmD9yGjEUxtcZ99gniDkBcAJwkRpuAF1KM5MD4DoN9gnA6TO4TYWZSQ/uMwOcABjHtfPb/Rat0Gr/2Nk3GVlIWn1P78/3pARv1cl+v99sNs7I3d1dp9O5vb2lb8aDClF7vV4QBBcXF3QAW61WdBqNxmQyabfbYFePylGA5KyAATkYDK6urhjZ7XbM0tZqNWOJ86AieXx8bDabnyPhfBo8OzvzLq4M9enpifM5g8PhEMNiZ3RqtVooFGsTWrkKuby8xLZmXyP39/cYH2ff3Nwko5U4VeYtv/6DZz0cDpwMq26OwoGakRBEWNW41iulUBeLBXvJevQJUQ7HvuzOOEhaBvAqErTB4INI9NXz8zNtokqh6XAJq4n7TiTsMhqN1ut1/ofz+bzf7yugpLF2EFfkoWI3IMlx+uPxmC3AU/6VlOVyicZA6iv0EFfkoWLJbrdLB2A0RX13xY/R27d22DrysnsbdcOp3zOBgb2LRNbNQ51Op6BiTCBns5k7zY5fgvjfr8nJFJAa79U0ACOCbVDzWAJrKPF7kbjTr/uk/3d/MmV+vh70lwPU63Wcyp7F0cRq1nhsKzN+bYQHon3ZuWbglEx975sxzEa0i4qLMwcurYS/KHZsRTzS/5TDA9fX16wjAmmJftT8H1QVJUkmKnmmCiWbkEJYmz6tqdLvLUqxU9N+ZS92BEN5TcIp7ViJY2iVQqQvManghNYd0mABqYIxzQjrsZa/qouJ2F1gYgb2pRVXcHRmpQ0tI+ABX4uEleI88ZfNFcxCkyeoGJPVBFg6L9kUxUNmISPJ+tVc2rBSBOKsjBdbIobBL/ZgmEkoy2pjz1D+LA2zxKKsZzASTuPhjRQVc3qMhwmdqTCg+Z5pTpAMs7vFLDH5WRyEAdHVWwNQna0wHnjO1TBBJSwVWifDP8dOjjtCBJlrQ/soGqFFIVrozAsZ+xULsOhdlwfWyx14cX6UxEFRbCtW/GeN/xyvkDaBZUFiwEItQZVfMXImKizvwBB7KCvT2ZlDh5+FoYQLVPzxbiaqbj0AeAPE3KTNPc9fD+xaF4l8wZ3GmY0ZUVnMlZV6xLlJJ5baZKa7PB3Rd6Hwue7+tGnuTOorwDiMFXTgDSyz3W4Vk3xJQOIhkXCZMsA+QvXS9XlaR0JR97ysHcvUH/Ps4XaoyLDFrTkctMw5ClEBwyp6ZhWflbJaCIl3Zb0cp+IXIB8eHuz4yHxxoBpZAbnYKW9HprZL57eT0HJEOnr971eOIlrxZiRTonLSTBnsFT73kkPeqxlgYlhF2xFTmQlmNMi6eRP/WQxc8Fa3S79hKz1djHe8XGEiVpeesqgs1av7pPZFdlNVEZjY2FvDNaianS6uHlT8j7J6HQBjYgqDQ4fm6WIG9ZTQT0LBeZigBPSSRvXc/clF3fR1VVe1UrKrErPA/g8HHo3259xnnWvwB9+vlcs/AQYALvMUDSvByQgAAAAASUVORK5CYII=") no-repeat scroll center left;}
+html.oldreddit:not(.r9-old) .sidebox.submit {background:url("data:image/png;base64,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") no-repeat scroll center left;}
+html.oldreddit:not(.r9-old) .sidebox .morelink {text-transform:none;}
+html.oldreddit:not(.r9-old) .sidebox .subtitle {margin-left:10px; color:dimgray; font-size:110%;}
+html.oldreddit:not(.r9-old) .raisedbox {padding:5px; background:#E0E0E0; border:1px solid gray;}
+html.oldreddit:not(.r9-old) .raisedbox h3 {font-size:160%; margin-bottom:0px; color:#333;}
+html.oldreddit:not(.r9-old) .raisedbox h4 {margin-bottom:3px}
+html.oldreddit:not(.r9-old) .raisedbox li {margin-bottom:2px;}
+html.oldreddit:not(.r9-old) .subreddit-info {padding-bottom:3px}
+html.oldreddit:not(.r9-old) .subreddit-info .moderate {color:orangered;}
+html.oldreddit:not(.r9-old) .subreddit-info .subscribe-button {margin-right:5px; font-size:larger;}
+html.oldreddit:not(.r9-old) .subreddit-info .label {color:#404040;}
+html.oldreddit:not(.r9-old) .subreddit-info .state-button {display:block}
+html.oldreddit:not(.r9-old) .subreddit-info .spacer {margin:10px 0px 0px 0px}
+html.oldreddit:not(.r9-old) .raisedbox .flat-list {}
+html.oldreddit:not(.r9-old) .raisedbox .flat-list .separator {display:none;}
+html.oldreddit:not(.r9-old) .raisedbox .flat-list a {background-color:#F0F0F0; border:1px solid white; border-bottom:none; margin-right:1px; padding:3px 5px 3px 5px;}
+html.oldreddit:not(.r9-old) .raisedbox .hover a:hover {background-color:#369; color:white; text-decoration:none;}
+html.oldreddit:not(.r9-old) .infotable {margin-top:5px; margin-bottom: 10px;}
+html.oldreddit:not(.r9-old) .infotable .small {font-size:smaller;}
+html.oldreddit:not(.r9-old) .infotable td {padding-right:3px;}
+html.oldreddit:not(.r9-old) .infotable a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .infotable .state-button a {background-color:#F0F0F0; color: gray;}
+html.oldreddit:not(.r9-old) .infotable .bold {font-weight:bold;}
+html.oldreddit:not(.r9-old) .infotable .invalid-user {background-color:pink}
+html.oldreddit:not(.r9-old) .infotable .organic-vote {border:1px solid green;}
+html.oldreddit:not(.r9-old) .profile-attr {}
+html.oldreddit:not(.r9-old) .profile-attr .label {font-weight:bold;}
+html.oldreddit:not(.r9-old) .profile-attr .value {color:#404040; margin-right:5px;}
+html.oldreddit:not(.r9-old) .profile-attr .md {margin-left:10px; margin-top:5px; border-color:#B2B2B2 #D0D0D0 #D0D0D0 #B2B2B2; border-style:solid; border-width:1px; padding:10px;}
+html.oldreddit:not(.r9-old) .profile-attr .md ul {float:none; list-style-type:disc; margin-left:15px;}
+html.oldreddit:not(.r9-old) .profile-attr .md p {margin-top:0px;}
+html.oldreddit:not(.r9-old) .question {color:red;}
+html.oldreddit:not(.r9-old) .question .yes {margin-left:5px; margin-right: 3px;}
+html.oldreddit:not(.r9-old) .question .no {margin:0px 3px 0px 3px;}
+html.oldreddit:not(.r9-old) .preload {position:absolute; top:-1000px; left:-1000px;}
+html.oldreddit:not(.r9-old) .arrow {margin:2px 0px 0px 0px; width:100%; height:14px; display:block; cursor:pointer; background-position:center center; background-repeat:no-repeat;}
+html.oldreddit:not(.r9-old) .arrow.upmod {background-image:url("data:image/gif;base64,R0lGODlhDwAOALMOAP+Ta/+Zc/+sjf+jgf+bdv+mhv+6of+tjv+KXv+zl/+/p/+Vbf+MYf+LYP///wAAACH5BAEAAA4ALAAAAAAPAA4AAARB0MnpGL2UAYvzagvXMUFjBmJWmmdafSwbTgxsIvFcL3zI7D1XAUAsdCYHgvJwlCQG0ETTYRBYDVNFYqvIKr5dSgQAOw==");}
+html.oldreddit:not(.r9-old) .arrow.downmod {background-image:url("data:image/gif;base64,R0lGODlhDwAOAKIHAKTS6lqt2G+33ZDI5X2+4VKq1jue0f///yH5BAEAAAcALAAAAAAPAA4AAAMweLrcDSMCxwa5gy4iOtGKEIwCeARFGjhpa7xtuhRvbRcNbcOUXuMaHxBEG5qMJk0CADs=");}
+html.oldreddit:not(.r9-old) .arrow.up {background-image:url("data:image/gif;base64,R0lGODlhDwAOAMQTAMHBwby8vNTU1M7Ozs3NzcLCwsrKytPT08DAwNzc3MfHx9jY2MjIyNvb276+vri4uLa2tr29vbe3t////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABMALAAAAAAPAA4AAAVS4CSOk0SepBQ86Pk4UmS20wNIODKf0i1BOVbKASn+fg5hTXYE4mImiSNCZT4i0+lOZIgEAgaaaFAoAAbiyUGhYAjSCwJhsEg3BIJDI51o+BMnIQA7");}
+html.oldreddit:not(.r9-old) .arrow.down {background-image:url("data:image/gif;base64,R0lGODlhDwAOAMQTAMHBwby8vNTU1M7Ozs3NzcLCwsrKytPT08DAwNzc3MfHx9jY2MjIyNvb276+vri4uLa2tr29vbe3t////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABMALAAAAAAPAA4AAAVT4CSKSWMmYzo2gnA0qroQxLDE6aEojICPg0IBMPiJDJFAwKCSOCLQiETyiDyfkkl1CpF0pxLpyAkpe72ORxPAnSLUsQfbnf09HOG6URKAG0V6KSEAOw==");}
+html.oldreddit:not(.r9-old) .midcol {float:left; margin-right:2px; margin-left:7px; background:transparent; overflow:hidden;}
+html.oldreddit:not(.r9-old) .entry {overflow:hidden; margin-left:3px; opacity:1;}
+html.oldreddit:not(.r9-old) .domain {color:#888; font-size:x-small;}
+html.oldreddit:not(.r9-old) .domain a {color:#888}
+html.oldreddit:not(.r9-old) .domain a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .tagline {color:#888; font-size:x-small;}
+html.oldreddit:not(.r9-old) .tagline a {color:#369; text-decoration: none;}
+html.oldreddit:not(.r9-old) .tagline a.friend {color:orangered}
+html.oldreddit:not(.r9-old) .tagline a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .media-button .option {color:red;}
+html.oldreddit:not(.r9-old) .media-button .option.active {background:transparent url("data:,") no-repeat scroll right center; padding-right:15px; color:#336699;}
+html.oldreddit:not(.r9-old) .linkcompressed .media-button .option.active {padding-right:15px;}
+html.oldreddit:not(.r9-old) .embededmedia {margin-top:5px; margin-left: 60px;}
+html.oldreddit:not(.r9-old) .thing .title {color:blue; padding: 0px; overflow: hidden;}
+html.oldreddit:not(.r9-old) .thing .title:visited {color:#551a8b}
+html.oldreddit:not(.r9-old) .thing .title.click {color:#551a8b}
+html.oldreddit:not(.r9-old) .thing .title.loggedin {color:blue}
+html.oldreddit:not(.r9-old) .thing .title.loggedin:visited {color:#551a8b}
+html.oldreddit:not(.r9-old) .thing .title.loggedin.click {color:#551a8b}
+html.oldreddit:not(.r9-old) .thing .title.loggedin.click:visited {color:#551a8b}
+html.oldreddit:not(.r9-old) .sitetable {list-style-type:none;}
+html.oldreddit:not(.r9-old) .ajaxhook {position:absolute; top: -1000px; left: 0px;}
+html.oldreddit:not(.r9-old) .nextprev {color:gray; font-size: larger; margin-top: 10px;}
+html.oldreddit:not(.r9-old) .help a {color:#808080; text-decoration:underline;}
+html.oldreddit:not(.r9-old) .help a.open {margin:0px 5px 5px 0; position:absolute; right:0px; bottom:0px;}
+html.oldreddit:not(.r9-old) .help.help-cover {background-color:#F8F8F8; border:1px solid gray; font-size:110%; display:none; padding:5px 10px 10px 10px; overflow:hidden;}
+html.oldreddit:not(.r9-old) .help p, html.oldreddit:not(.r9-old) .help form {margin:5px;}
+html.oldreddit:not(.r9-old) .help form {display:inline;}
+html.oldreddit:not(.r9-old) .wikipage {margin:15px;}
+html.oldreddit:not(.r9-old) .organic-listing {border:solid 1px gray; padding:0; overflow:hidden; position:relative; min-height:50px;}
+html.oldreddit:not(.r9-old) .organic-listing .link {background-color:#F8F8F8; padding:5px 7em 10px 0; margin-bottom:0px;}
+html.oldreddit:not(.r9-old) .organic-listing .linkcompressed {background-color:#F8F8F8; padding:5px 7em 10px 0; margin-bottom:0px;}
+html.oldreddit:not(.r9-old) .organic-listing .nextprev {margin:0px; position:absolute; right:0px; top:0px; vertical-align:top;}
+html.oldreddit:not(.r9-old) .organic-listing .nextprev img {margin:5px 5px 2px 0px; border: solid 1px #B3B3B3;}
+html.oldreddit:not(.r9-old) .organic-listing .nextprev img:hover {cursor:pointer; border: solid 1px #336699;}
+html.oldreddit:not(.r9-old) .organic-listing .nextprev img:active {margin:6px 4px 1px 1px;}
+html.oldreddit:not(.r9-old) .promoted {background-color:#EFF7FF; border:1px solid gray; padding:5px 0 5px 0; overflow:hidden; position:relative;}
+html.oldreddit:not(.r9-old) .promoted-list {font-size:larger;}
+html.oldreddit:not(.r9-old) .promoted-list .unpromote-button {display:inline}
+html.oldreddit:not(.r9-old) .promoted-list .unpromote-button a {color:gray;}
+html.oldreddit:not(.r9-old) .organic-listing .promoted {background-color:#EFF7FF; border:none;}
+html.oldreddit:not(.r9-old) .organic-listing .sponsored-tagline {right:6.4em;}
+html.oldreddit:not(.r9-old) .sponsored-tagline {color:#808080; bottom:0; margin:0 5px 5px 0; position:absolute; font-weight:bold; right:0;}
+html.oldreddit:not(.r9-old) .promote-pixel {position:absolute; top:-1000px; right:-1000px;}
+html.oldreddit:not(.r9-old) .organic-help-button {padding:0 .5ex;}
+html.oldreddit:not(.r9-old) .infobar {background-color:#f6e69f; padding:5px 10px; margin:5px 305px 5px 0px; border:1px solid orange; font-size:small;}
+html.oldreddit:not(.r9-old) .infobar img {display:inline; vertical-align:middle;}
+html.oldreddit:not(.r9-old) .md {max-width:60em; overflow: auto; font-size: small;}
+html.oldreddit:not(.r9-old) .md p, html.oldreddit:not(.r9-old) .md h1 {margin:5px 0}
+html.oldreddit:not(.r9-old) .md h1 {font-weight:normal; font-size: 100%;}
+html.oldreddit:not(.r9-old) .md > * {margin-bottom:0px}
+html.oldreddit:not(.r9-old) .md strong {font-weight:bold;}
+html.oldreddit:not(.r9-old) .md em {font-style:italic;}
+html.oldreddit:not(.r9-old) .md strong em {font-style:italic; font-weight: bold}
+html.oldreddit:not(.r9-old) .md img {display:none}
+html.oldreddit:not(.r9-old) .md ol, html.oldreddit:not(.r9-old) .md ul {margin:10px 2em;}
+html.oldreddit:not(.r9-old) .md ul {list-style:disc outside}
+html.oldreddit:not(.r9-old) .md ol {list-style:decimal outside}
+html.oldreddit:not(.r9-old) .md pre {margin:10px;}
+html.oldreddit:not(.r9-old) .md blockquote, html.oldreddit:not(.r9-old) .help blockquote {border-left:2px solid #369; padding-left:4px; margin:5px; margin-right:15px;}
+html.oldreddit:not(.r9-old) .menuarea {border-bottom:1px dotted gray; padding:5px 10px; margin:5px 310px 5px 5px; font-size:larger;}
+html.oldreddit:not(.r9-old) .menuarea .spacer {display:inline; margin-right: 15px}
+html.oldreddit:not(.r9-old) a.star {text-decoration:none; color: #ff8b60}
+html.oldreddit:not(.r9-old) .odd {}
+html.oldreddit:not(.r9-old) .even {}
+html.oldreddit:not(.r9-old) .entry .buttons li {display:inline; padding:0 4px; border:none;}
+html.oldreddit:not(.r9-old) .entry .buttons li.first {padding-left:0px;}
+html.oldreddit:not(.r9-old) .entry .buttons li a {color:#888; font-weight:bold; padding:0 1px;}
+html.oldreddit:not(.r9-old) .entry .buttons a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .toggle .error {font-size:x-small;}
+html.oldreddit:not(.r9-old) .toggle .option {display:none;}
+html.oldreddit:not(.r9-old) .toggle .option.active {display:inline;}
+html.oldreddit:not(.r9-old) .thing .stub {display:none;}
+html.oldreddit:not(.r9-old) .link.last-clicked {border:1px dashed gray;}
+html.oldreddit:not(.r9-old) .link {margin:0; margin-bottom: 8px; padding-left: 3px;}
+html.oldreddit:not(.r9-old) .link .score {text-align:center; color: #c6c6c6;}
+html.oldreddit:not(.r9-old) .link .title {font-size:medium; font-weight:normal; margin-bottom: 1px;}
+html.oldreddit:not(.r9-old) .link .child h3 {margin:15px; text-transform:none; font-size:medium;}
+html.oldreddit:not(.r9-old) .rank {overflow:hidden}
+html.oldreddit:not(.r9-old) .link .midcol {font-weight:bold; font-size: small;}
+html.oldreddit:not(.r9-old) .link .score.likes {color:#FF8B60;}
+html.oldreddit:not(.r9-old) .link .score.dislikes {color:#9494FF;}
+html.oldreddit:not(.r9-old) .link .rank {float:left; margin-top:15px; color:#c6c6c6; font-family:arial; font-size:medium; text-align:right;}
+html.oldreddit:not(.r9-old) .score.likes, html.oldreddit:not(.r9-old) .score.dislikes {display:none;}
+html.oldreddit:not(.r9-old) .likes .score, html.oldreddit:not(.r9-old) .dislikes .score {display:none;}
+html.oldreddit:not(.r9-old) .likes .score.likes {display:inline;}
+html.oldreddit:not(.r9-old) .dislikes .score.dislikes {display:inline;}
+html.oldreddit:not(.r9-old) .likes div.score.likes {display:block;}
+html.oldreddit:not(.r9-old) .dislikes div.score.dislikes {display:block;}
+html.oldreddit:not(.r9-old) .linkcompressed {margin:4px 0; overflow: hidden; margin-top: 8px;}
+html.oldreddit:not(.r9-old) .linkcompressed .title {margin-bottom:4px; font-size:medium; font-weight: normal;}
+html.oldreddit:not(.r9-old) .linkcompressed .child h3 {margin:15px; text-transform:none; font-size:medium;}
+html.oldreddit:not(.r9-old) .linkcompressed .score.likes {color:#FF8B60;}
+html.oldreddit:not(.r9-old) .linkcompressed .score.dislikes {color:#9494FF;}
+html.oldreddit:not(.r9-old) .linkcompressed .rank {margin-top:8px; float:left; color:#c6c6c6; font-family:arial; font-size:medium; text-align:right;}
+html.oldreddit:not(.r9-old) .linkcompressed .arrow.down, html.oldreddit:not(.r9-old) .linkcompressed .arrow.downmod {margin-top:4px;}
+html.oldreddit:not(.r9-old) .linkcompressed .tagline {display:inline; margin-top: 0px; margin-bottom: 1px;}
+html.oldreddit:not(.r9-old) .linkcompressed .flat-list {display:inline}
+html.oldreddit:not(.r9-old) .linkcompressed .entry .buttons li {padding:2px; background-color: transparent;}
+html.oldreddit:not(.r9-old) .linkcompressed .entry .buttons li.first {padding-left:.5em;}
+html.oldreddit:not(.r9-old) .linkcompressed .entry .buttons li a {padding:0 2px; background-color:#fafafa; font-weight:bold}
+html.oldreddit:not(.r9-old) .linkcompressed .midcol {width:15px;}
+html.oldreddit:not(.r9-old) .linkcompressed .entry .buttons li a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .warm-entry .rank {color:#EDA179;}
+html.oldreddit:not(.r9-old) .hot-entry .rank {color:#E47234;}
+html.oldreddit:not(.r9-old) .cool-entry .rank {color:#A5ABFB;}
+html.oldreddit:not(.r9-old) .cold-entry .rank {color:#4959F7;}
+html.oldreddit:not(.r9-old) .gadget {font-size:x-small; border:1px solid gray; padding:5px;}
+html.oldreddit:not(.r9-old) .gadget h2 {padding-left:49px; font-size:150%; margin-bottom:5px;}
+html.oldreddit:not(.r9-old) .gadget .midcol {width:15px; margin:0;}
+html.oldreddit:not(.r9-old) .gadget .reddit-link-end {clear:left; padding-top:10px;}
+html.oldreddit:not(.r9-old) .gadget .click-gadget {font-size:small;}
+html.oldreddit:not(.r9-old) .gadget small {color:gray;}
+html.oldreddit:not(.r9-old) .gadget .reddit-entry {margin-left:20px;}
+html.oldreddit:not(.r9-old) .gadget .right {text-align:right;}
+html.oldreddit:not(.r9-old) .comment {margin-left:10px;}
+html.oldreddit:not(.r9-old) .comment .edit-body {display:none; visibility: hidden;}
+html.oldreddit:not(.r9-old) .comment .midcol {margin-left:0px;}
+html.oldreddit:not(.r9-old) .comment .title {font-size:small; margin-top: 10px;}
+html.oldreddit:not(.r9-old) .comment .midcol {width:15px;}
+html.oldreddit:not(.r9-old) .comment .author {font-weight:bold;}
+html.oldreddit:not(.r9-old) .comment .collapsed {font-size:x-small; color:gray; font-style:italic; padding-left:17px; padding-bottom:10px;}
+html.oldreddit:not(.r9-old) .comment .collapsed a {color:gray;}
+html.oldreddit:not(.r9-old) .comment .expand {font-style:normal; margin-left:5px; margin-right:5px; padding:1px;}
+html.oldreddit:not(.r9-old) .comment .expand:hover {text-decoration:none; color:white; background-color:#369;}
+html.oldreddit:not(.r9-old) .comment .score {font-size:x-small;}
+html.oldreddit:not(.r9-old) .comment .child {margin-top:10px; margin-left:15px;}
+html.oldreddit:not(.r9-old) .commentreply {margin:10px; margin-left:15px; width:40em;}
+html.oldreddit:not(.r9-old) textarea.gray {color:gray;}
+html.oldreddit:not(.r9-old) .commentreply textarea {border:1px solid #369; width:100%; margin:0px; margin-bottom:-1px;}
+html.oldreddit:not(.r9-old) .commentreply .buttons {margin:0px; float:left;}
+html.oldreddit:not(.r9-old) .commentreply .buttons button {margin:5px;}
+html.oldreddit:not(.r9-old) .commentreply table.help {margin:0px; margin-top:5px; font-size:larger; width:100%;}
+html.oldreddit:not(.r9-old) .commentreply .help, html.oldreddit:not(.r9-old) .commentreply .help td, html.oldreddit:not(.r9-old) .commentreply .help tr {border:1px solid #C0C0C0; padding:4px; margin:0px;}
+html.oldreddit:not(.r9-old) .commentreply .help-toggle {float:right; margin-top:7px;}
+html.oldreddit:not(.r9-old) .permamessage {font-size:larger; border:1px dotted black; padding:5px 5px 5px 18px; white-space:nowrap; background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAZCAIAAABsJZPcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEpJREFUeNpi+I8E1h66hsxlYoCBdYevty05DCThIkzIEkAGsjQTsgQEwKVZ0CTg0iAK2XLjtJnY3YIJRuWGrxwLGt8kfRacDRBgAA7RUiLIVTKXAAAAAElFTkSuQmCC"); background-repeat:no-repeat; background-position:5px center;}
+html.oldreddit:not(.r9-old) .deepthread {padding-right:30px; background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAJCAIAAABIXRCvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE5JREFUeNpi+E8BWHvoGjKXiYEC0Lbk8LrD1+FcisxCM45Ss5CNYzFJn0UV44AkIzDMyDYC7o6qGNsgW00q+BFiEBXCC24QCFAxfQEEGAAFlK1etFuPwQAAAABJRU5ErkJggg=="); background-repeat:no-repeat; background-position:center right;}
+html.oldreddit:not(.r9-old) .deepthread a {font-size:larger; color: #336699}
+html.oldreddit:not(.r9-old) .deepthread a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .morecomments {font-size:larger}
+html.oldreddit:not(.r9-old) .morecomments a {color:#336699}
+html.oldreddit:not(.r9-old) .morecomments a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .morecomments .gray {font-weight:normal; color: gray}
+html.oldreddit:not(.r9-old) .message {margin:10px}
+html.oldreddit:not(.r9-old) .message .head.new {color:orangered}
+html.oldreddit:not(.r9-old) .message .subject {font-weight:bold; font-size: larger;}
+html.oldreddit:not(.r9-old) .subreddit {margin-bottom:10px;}
+html.oldreddit:not(.r9-old) .subreddit p {margin-top:0px; margin-bottom: 1px;}
+html.oldreddit:not(.r9-old) .subreddit .description {font-size:small; max-width: 60em;}
+html.oldreddit:not(.r9-old) .subreddit .key {display:block;}
+html.oldreddit:not(.r9-old) .subreddit .title {font-size:medium; margin-right: 5px;}
+html.oldreddit:not(.r9-old) .subreddit .midcol {margin-right:5px}
+html.oldreddit:not(.r9-old) .sr-toggle-button {display:block; margin-bottom:5px; cursor:pointer;}
+html.oldreddit:not(.r9-old) .sr-toggle-button a.option.active {display:block; width:54px; height:18px;}
+html.oldreddit:not(.r9-old) .sr-toggle-button .remove {background-image:url("data:,")}
+html.oldreddit:not(.r9-old) .sr-toggle-button .add {background-image:url("data:,")}
+html.oldreddit:not(.r9-old) .sr-type-img {margin-right:2px;}
+html.oldreddit:not(.r9-old) .commentbody {}
+html.oldreddit:not(.r9-old) .commentbody.border {background-color:#ffc; padding-left: 5px}
+html.oldreddit:not(.r9-old) .commentbody.grayed {color:gray; background-color:#E0E0E0; padding-left:5px;}
+html.oldreddit:not(.r9-old) .fixedwidth {float:left; width: 100px; height: 0px;}
+html.oldreddit:not(.r9-old) .clearleft {clear:left; height: 0px;}
+html.oldreddit:not(.r9-old) .clear {clear:both;}
+html.oldreddit:not(.r9-old) .sharetable.preftable {margin-left:20px;}
+html.oldreddit:not(.r9-old) .sharetable.preftable th {padding-bottom:5px; padding-top: 5px;}
+html.oldreddit:not(.r9-old) .sharetable.preftable button {margin-top:10px}
+html.oldreddit:not(.r9-old) .preftable.widget-preview {font-size:smaller;}
+html.oldreddit:not(.r9-old) .preftable.widget-preview input[type="text"] {width:150px;}
+html.oldreddit:not(.r9-old) .preftable #css-options input[type="text"] {margin-left:0px; width: 6em;}
+html.oldreddit:not(.r9-old) .share-summary {width:95%; margin-top: 10px;}
+html.oldreddit:not(.r9-old) .share-summary .head td {width:50%; font-size: large; text-align: center}
+html.oldreddit:not(.r9-old) .share-summary td {vertical-align:top;}
+html.oldreddit:not(.r9-old) .share-summary > tbody > tr > td {padding-left:10px; padding-bottom:10px;}
+html.oldreddit:not(.r9-old) .share-summary th {padding:5px; border-bottom: 1px solid #000;}
+html.oldreddit:not(.r9-old) .sponsored .entry {margin-right:20px;}
+html.oldreddit:not(.r9-old) .sponsored .titlerow {background:#fcfcfc; padding:10px; border-top:#BCBCBC solid 1px; border-left:#BCBCBC solid 1px; border-bottom:#E0E0E0 solid 1px; border-right:#E0E0E0 solid 1px;}
+html.oldreddit:not(.r9-old) .sponsored .asterisk {width:15px; background:url("data:,"); background-repeat:no-repeat}
+html.oldreddit:not(.r9-old) .footer-parent {padding-top:40px; clear:both; text-align:center;}
+html.oldreddit:not(.r9-old) .footer {color:gray; font-size:larger; padding:5px; margin:15px; border:1px solid #F0F0F0; display:inline-block;}
+html.oldreddit:not(.r9-old) .footer .col {float:left; margin:10px; padding-left:10px; border-left:1px solid #E0E0E0; height:150px;}
+html.oldreddit:not(.r9-old) .footer .col:first-child {border:none;}
+html.oldreddit:not(.r9-old) .notes-button {margin-top:3px;}
+html.oldreddit:not(.r9-old) .notes-status {font-size:larger;}
+html.oldreddit:not(.r9-old) .server-status {width:300px;}
+html.oldreddit:not(.r9-old) .server-status table {font-size:xx-small; margin-left:5px; border-top:#BCBCBC solid 1px; border-left:#BCBCBC solid 1px; border-bottom:#E0E0E0 solid 1px; border-right:#E0E0E0 solid 1px; margin-bottom:5px;}
+html.oldreddit:not(.r9-old) .server-status td {padding-right:2px; padding-left: 2px;}
+html.oldreddit:not(.r9-old) .server-status .bar {height:5px; background-color: blue;}
+html.oldreddit:not(.r9-old) .server-status .load0 {background-color:#FFFFFF;}
+html.oldreddit:not(.r9-old) .server-status .load1 {background-color:#f0f5FF;}
+html.oldreddit:not(.r9-old) .server-status .load2 {background-color:#E2ECFF;}
+html.oldreddit:not(.r9-old) .server-status .load3 {background-color:#d6f5cb;}
+html.oldreddit:not(.r9-old) .server-status .load4 {background-color:#CAFF98;}
+html.oldreddit:not(.r9-old) .server-status .load5 {background-color:#e4f484;}
+html.oldreddit:not(.r9-old) .server-status .load6 {background-color:#FFEA71;}
+html.oldreddit:not(.r9-old) .server-status .load7 {background-color:#ffdb81;}
+html.oldreddit:not(.r9-old) .server-status .load8 {background-color:#FF9191;}
+html.oldreddit:not(.r9-old) .server-status .load9 {background-color:#FF0000; color: #FFFFFF}
+html.oldreddit:not(.r9-old) .server-status tr.down > * {background-color:#C0C0C0; text-decoration:line-through;}
+html.oldreddit:not(.r9-old) .server-status th {font-weight:bold; padding-right: 2px;}
+html.oldreddit:not(.r9-old) .server-status tr.title-region {cursor:pointer;}
+html.oldreddit:not(.r9-old) .server-status tr.title-region:hover > td, html.oldreddit:not(.r9-old) .server-status tr.title-region:hover > th {text-decoration:underline;}
+html.oldreddit:not(.r9-old) .server-status tr.title-region.empty {cursor:default; opacity: 0.7;}
+html.oldreddit:not(.r9-old) .server-status tr.title-region.empty:hover > td, html.oldreddit:not(.r9-old) .server-status tr.title-region.empty:hover > th {text-decoration:none;}
+html.oldreddit:not(.r9-old) .server-status .pegged {background-color:red; font-weight:bold; color:#FFFFFF;}
+html.oldreddit:not(.r9-old) .server-status .membar {height:11px; border:1px solid white; background-color:#6699FF; position:relative;}
+html.oldreddit:not(.r9-old) .server-status .membar span {position:absolute; font-size:smaller;}
+html.oldreddit:not(.r9-old) .server-status .cpu50 {height:5px; background-color:green; border:1px solid white; border-bottom:none;}
+html.oldreddit:not(.r9-old) .server-status .cpu300 {height:5px; background-color:red; border:1px solid white;}
+html.oldreddit:not(.r9-old) .orangered {color:orangered;}
+html.oldreddit:not(.r9-old) .logout {display:inline;}
+html.oldreddit:not(.r9-old) .login-form-side {border:1px solid gray;}
+html.oldreddit:not(.r9-old) .login-form-side input {border:1px solid gray; width:138px; height:17px; margin:5px 0px 0px 5px; top:5px; padding:1px;}
+html.oldreddit:not(.r9-old) .login-form-side .error {margin:5px;}
+html.oldreddit:not(.r9-old) #remember-me {margin:5px;}
+html.oldreddit:not(.r9-old) #rem-login-main {position:static; height:auto; width:auto; border:none; margin-right:5px;}
+html.oldreddit:not(.r9-old) .login-form-side label {padding:2px 0 2px 0; margin-right:5px; white-space:nowrap;}
+html.oldreddit:not(.r9-old) .login-form-side button {float:right;}
+html.oldreddit:not(.r9-old) .status {color:red;}
+html.oldreddit:not(.r9-old) .error {color:red; font-size: small; margin: 5px;}
+html.oldreddit:not(.r9-old) .line-through {text-decoration:line-through}
+html.oldreddit:not(.r9-old) #noresults {margin-right:310px;}
+html.oldreddit:not(.r9-old) #ad-frame {border:0px; overflow:hidden; width:300px; height:280px;}
+html.oldreddit:not(.r9-old) #searchmenu {margin:10px 0 0px 0; padding: 2px 0 0 0; border-bottom:2px solid #369; background-color:whitesmoke}
+html.oldreddit:not(.r9-old) #searchmenu .searchlabel {background-color:white; padding:2px 15px 0px 0px; font-weight:bold; color: #369}
+html.oldreddit:not(.r9-old) #searchmenu .searchtime {font-weight:bold; display:inline; width:305px;}
+html.oldreddit:not(.r9-old) .searchparams {margin:5px 20px 5px 20px}
+html.oldreddit:not(.r9-old) .searchparams .labels {text-align:right; margin-left:10px;}
+html.oldreddit:not(.r9-old) .searchpane {margin:5px 310px 5px 0px;}
+html.oldreddit:not(.r9-old) .searchpane #search input[type=text] {}
+html.oldreddit:not(.r9-old) .searchpane .summary {font-weight:bold; float:right;}
+html.oldreddit:not(.r9-old) .searchpane .clearleft {margin-bottom:10px;}
+html.oldreddit:not(.r9-old) .legal {color:#808080; font-family: serif; font-size: small; margin-top: 20px;}
+html.oldreddit:not(.r9-old) .legal a {text-decoration:underline}
+html.oldreddit:not(.r9-old) .divide {border-right:2px solid #D3D3D3;}
+html.oldreddit:not(.r9-old) .loginform {float:left; width:45%; padding-left:15px; padding-right:15px;}
+html.oldreddit:not(.r9-old) .loginform h3 {margin-bottom:0; margin-top:10px; font-size:large; font-weight:bold; font-variant:small-caps; color:#404040;}
+html.oldreddit:not(.r9-old) .loginform p {text-align:left; margin-bottom:10px; color:#606060; margin-bottom:20px;}
+html.oldreddit:not(.r9-old) .loginform label {display:block; font-weight:bold; color:#606060;}
+html.oldreddit:not(.r9-old) .loginform .remember {display:inline; margin-left:5px;}
+html.oldreddit:not(.r9-old) .loginform ul {margin:5px;}
+html.oldreddit:not(.r9-old) .loginform li {margin-top:5px;}
+html.oldreddit:not(.r9-old) .loginform p .btn {margin-top:5px}
+html.oldreddit:not(.r9-old) .loginform input.logtxt {width:125px;}
+html.oldreddit:not(.r9-old) .loginform input[type=text], html.oldreddit:not(.r9-old) .loginform input[type=password] {width:125px; border:1px solid #A0A0A0; margin-top:2px; margin-bottom:2px; padding:1px;}
+html.oldreddit:not(.r9-old) .loginform #captcha {width:250px;}
+html.oldreddit:not(.r9-old) .cover {position:fixed; top:0px; left:0px; height:100%; width:100%; background-color:gray; opacity:.7; filter:alpha(opacity=70); z-index:1000;}
+html.oldreddit:not(.r9-old) .popup {position:fixed; left:10%; background-color:white; top:40px; width:80%; text-align:left; z-index:1001; padding:10px; border-color:#B2B2B2 black black #B2B2B2; border-style:solid; border-width:1px;}
+html.oldreddit:not(.r9-old) .popup h1 {text-align:center; font-size:large; font-weight:normal; color:orangered;}
+html.oldreddit:not(.r9-old) .popup h2 {text-align:center; font-size:small; margin-top:0px; color:black; font-weight:normal;}
+html.oldreddit:not(.r9-old) .usertable {margin-left:10px;}
+html.oldreddit:not(.r9-old) .usertable {font-size:larger}
+html.oldreddit:not(.r9-old) .usertable td {padding:0 .7em}
+html.oldreddit:not(.r9-old) .usertable {white-space:nowrap}
+html.oldreddit:not(.r9-old) .aboutpage {margin-right:320px;}
+html.oldreddit:not(.r9-old) .aboutpage p {margin:5px;}
+html.oldreddit:not(.r9-old) .aboutpage h1, html.oldreddit:not(.r9-old) .aboutpage h2 {margin:10px;}
+html.oldreddit:not(.r9-old) .aboutpage .usertable {width:45%;}
+html.oldreddit:not(.r9-old) .little a {font-size:x-small;}
+html.oldreddit:not(.r9-old) .oldbylink a {background-color:#F0F0F0; margin: 2px; color: gray}
+html.oldreddit:not(.r9-old) .details {font-size:x-small; margin-bottom:10px;}
+html.oldreddit:not(.r9-old) .details span {margin:0 5px 0 5px;}
+html.oldreddit:not(.r9-old) .details th {text-align:right; padding-right:5px; font-weight:bold;}
+html.oldreddit:not(.r9-old) .details td {vertical-align:top;}
+html.oldreddit:not(.r9-old) .bottommenu {color:gray; font-size: smaller; clear: both}
+html.oldreddit:not(.r9-old) .bottommenu a {color:gray; text-decoration: underline;}
+html.oldreddit:not(.r9-old) .button {border-collapse:collapse; color:gray; text-align:center; margin:1px;}
+html.oldreddit:not(.r9-old) .button #cover {position:relative;}
+html.oldreddit:not(.r9-old) .button .cover {background:white;}
+html.oldreddit:not(.r9-old) .button #popup {position:absolute; width:80%; z-index:1001; background:white; padding:2px; border-color:#B2B2B2 black black #B2B2B2; border-style:solid; border-width:1px;}
+html.oldreddit:not(.r9-old) .button .arrow {width:15px;}
+html.oldreddit:not(.r9-old) .num {font-weight:bold; font-size: larger}
+html.oldreddit:not(.r9-old) .button .blog {border:1px solid #c7def7; color:gray; text-align:center; margin:1px;}
+html.oldreddit:not(.r9-old) .button {color:#369;}
+html.oldreddit:not(.r9-old) .button a:hover {text-decoration:underline}
+html.oldreddit:not(.r9-old) .button .blog1 {font-size:x-small;}
+html.oldreddit:not(.r9-old) .button .blog1 .arrow {float:left; margin-left:2px; margin-right: 2px;}
+html.oldreddit:not(.r9-old) .button .blog1 .headimgcell {background-color:#c7def7; width:18px; float:left;}
+html.oldreddit:not(.r9-old) .button .blog1 .score {float:center; margin-top:2px; margin-right:5px;}
+html.oldreddit:not(.r9-old) .button .blog2 {font-size:small;}
+html.oldreddit:not(.r9-old) .button .blog2 .arrow {width:100%}
+html.oldreddit:not(.r9-old) .button .blog2 .bottomreddit {color:black; background-color: #c7def7; font-size: small;}
+html.oldreddit:not(.r9-old) .button .blog3 {font-size:small; border: none;}
+html.oldreddit:not(.r9-old) .button .blog3 .left {float:left; width: 50%;}
+html.oldreddit:not(.r9-old) .button .blog3 .arrow {width:100%}
+html.oldreddit:not(.r9-old) .button .blog3 .right {float:right; margin-top: 5px;}
+html.oldreddit:not(.r9-old) .blog5 .right {float:right;}
+html.oldreddit:not(.r9-old) .blog5 .left {float:left; display:block; margin-top: 10px;}
+html.oldreddit:not(.r9-old) .blog5 .clearleft {clear:left;}
+html.oldreddit:not(.r9-old) .button .blog.blog5 {border:none; text-align: left; font-size: small;}
+html.oldreddit:not(.r9-old) .blog5 .container {margin-left:35px; margin-top: 2px; height: 50px;}
+html.oldreddit:not(.r9-old) .blog5 ul {display:inline;}
+html.oldreddit:not(.r9-old) .blog5 ul a {color:#515481; font-weight: bold; text-decoration: underline;}
+html.oldreddit:not(.r9-old) .blog5 li {display:inline; padding: 1px 10px 1px 10px;}
+html.oldreddit:not(.r9-old) .blog5 li.selected {background-color:#F8F8F1; color:#000; border-color:#CCC; border-style:solid solid none solid; border-width:1px;}
+html.oldreddit:not(.r9-old) .blog5 .votes {height:25px; background-color:#F8F8F1; border:1px solid #CCC; padding-top:5px;}
+html.oldreddit:not(.r9-old) .blog5 .arrow {margin-right:15px; margin-left:5px; color:black; cursor:pointer; display:inline; background-position:left center; background-repeat:no-repeat; padding-left:20px;}
+html.oldreddit:not(.r9-old) .blog5 .votes.disabled .arrow {color:#888;}
+html.oldreddit:not(.r9-old) .blog5 .arrow:hover {text-decoration:none;}
+html.oldreddit:not(.r9-old) .blog5 .arrow b {font-size:larger;}
+html.oldreddit:not(.r9-old) .blog5 .arrow.upmod b {color:#FF8B60;}
+html.oldreddit:not(.r9-old) .blog5 .arrow.downmod b {color:#9494FF;}
+html.oldreddit:not(.r9-old) .blog5 .right {margin-right:5px; font-size: medium; font-style: italic;}
+html.oldreddit:not(.r9-old) .blog5 .controversy3 {color:#BB2222;}
+html.oldreddit:not(.r9-old) .blog5 .controversy2 {color:#AB4242;}
+html.oldreddit:not(.r9-old) .blog5 .controversy1 {color:#976B6B;}
+html.oldreddit:not(.r9-old) .blog5 .controversy0 {color:#A8A8A8;}
+html.oldreddit:not(.r9-old) .optional {color:green}
+html.oldreddit:not(.r9-old) .instructions {font-size:larger;}
+html.oldreddit:not(.r9-old) .instructions h1, html.oldreddit:not(.r9-old) .instructions h2, html.oldreddit:not(.r9-old) .instructions h3 {margin-top:20px; margin-bottom: 20px;}
+html.oldreddit:not(.r9-old) .instructions p {margin:10px; max-width: 60em}
+html.oldreddit:not(.r9-old) .instructions pre {margin:5px; margin-right: 10px;}
+html.oldreddit:not(.r9-old) .instructions iframe {margin:5px 10px 5px 0px;}
+html.oldreddit:not(.r9-old) .instructions input, html.oldreddit:not(.r9-old) .instructions select {margin:0 .5em}
+html.oldreddit:not(.r9-old) .instructions a:focus {-moz-outline-style:none;}
+html.oldreddit:not(.r9-old) .instructions strong {font-weight:bold;}
+html.oldreddit:not(.r9-old) .instructions .buttons {margin-left:1em; max-width: 50em;}
+html.oldreddit:not(.r9-old) .instructions .buttons li {margin-top:1em; border-bottom:1px solid #e0e0e0; padding-bottom:1em;}
+html.oldreddit:not(.r9-old) .instructions code {display:block; font-family:monospace; font-size:small; margin:5px; background-color:#FF9; padding:10px; max-width:50em;}
+html.oldreddit:not(.r9-old) .button-demo a.view-code, html.oldreddit:not(.r9-old) .button-demo a.hide-code {float:right; margin-bottom: 1em;}
+html.oldreddit:not(.r9-old) .button-demo a.hide-code {display:none;}
+html.oldreddit:not(.r9-old) .instructions .button-demo code {display:none;}
+html.oldreddit:not(.r9-old) .button-demo.show-demo a.view-code {display:none;}
+html.oldreddit:not(.r9-old) .button-demo.show-demo a.hide-code {display:inline;}
+html.oldreddit:not(.r9-old) .button-demo.show-demo code {display:block;}
+html.oldreddit:not(.r9-old) #preview {float:right; width: 30em; margin: 10px;}
+html.oldreddit:not(.r9-old) #preview span {color:lightgray;}
+html.oldreddit:not(.r9-old) #preview #previewbox {border-width:.2em; border-style:dashed; border-color:lightgray; padding:1em; font-size:larger;}
+html.oldreddit:not(.r9-old) .bookmarklet {border:solid #888888 1px; padding:0px 2px;}
+html.oldreddit:not(.r9-old) .toolbar {font-size:small; border-bottom:1px solid #336699; background-color:#CEE3F8;}
+html.oldreddit:not(.r9-old) .toolbar .left-side {height:19px; float:left; border-right:solid #336699 1px; background-color:#EFF7FF;}
+html.oldreddit:not(.r9-old) .toolbar .middle-side {text-align:center; background-color:#EFF7FF; cursor:pointer;}
+html.oldreddit:not(.r9-old) .toolbar .middle-side a, html.oldreddit:not(.r9-old) .toolbar .middle-side b {display:block; border-left:none;}
+html.oldreddit:not(.r9-old) .toolbar .middle-side input[type=text] {font-size:14px; vertical-align:baseline; width:100%; height:18px; border:none; border-top:solid transparent 1px; margin-left:2px;}
+html.oldreddit:not(.r9-old) .toolbar .middle-side .url {overflow:hidden;}
+html.oldreddit:not(.r9-old) .toolbar .middle-side .domain {color:#888; font-size:small;}
+html.oldreddit:not(.r9-old) .toolbar .right-side {float:right; background-color:#EFF7FF;}
+html.oldreddit:not(.r9-old) .toolbar a, html.oldreddit:not(.r9-old) .toolbar b {font-weight:normal; display:inline-block; height:18px; border-left:solid #336699 1px; white-space:nowrap; padding:1px 4px 0px; overflow:hidden; outline:none; -moz-outline:none;}
+html.oldreddit:not(.r9-old) .toolbar a, html.oldreddit:not(.r9-old) .toolbar .clickable {cursor:pointer; color:#336699; text-decoration:none;}
+html.oldreddit:not(.r9-old) .toolbar .clickable:active, html.oldreddit:not(.r9-old) .pushed-button {background-color:#cee3f8 !important; color:orangered !important;}
+html.oldreddit:not(.r9-old) .toolbar a img, html.oldreddit:not(.r9-old) toolbar b img {vertical-align:middle; padding-top:3px;}
+html.oldreddit:not(.r9-old) .toolbar .content {float:left; vertical-align:middle;}
+html.oldreddit:not(.r9-old) .toolbar .logo {margin:0px; padding:0 2px; border-left:none; vertical-align:top;}
+html.oldreddit:not(.r9-old) .toolbar .title {padding-left:1em; padding-right:1em; color:black; display:block; overflow:hidden;}
+html.oldreddit:not(.r9-old) .toolbar .title:active {color:orangered;}
+html.oldreddit:not(.r9-old) .toolbar .controls {float:right;}
+html.oldreddit:not(.r9-old) .toolbar .arrow {display:inline-block; width:auto; margin:0px; background-position:left center; padding-left:16px;}
+html.oldreddit:not(.r9-old) .toolbar .arrow.upmod {background-image:url("data:image/gif;base64,R0lGODlhDwAOAOMOAP+Ta/+Zc/+sjf+jgf+bdv+mhv+6of+tjv+KXv+zl/+/p/+Vbf+MYf+LYAAAAAAAACH5BAEAAA8ALAAAAAAPAA4AAAQs8MlJq33g2tWWnkEjBl8ojhd3nh6lisjaWkz9TUB+S0S/P4PgT0D8JY6/TwQAOw==");}
+html.oldreddit:not(.r9-old) .toolbar .arrow.downmod {background-image:url("data:image/gif;base64,R0lGODlhDwAOAOMOAJ6e/5qa/6en/66u/6Gh/6mp/7u7/7Cw/7+//5KS/7S0/8HB/5ub/5SU/wAAAAAAACH5BAEAAA8ALAAAAAAPAA4AAAQr8MlJq1XY2sF1FaBHEaQ4BagpNazHsGwCN0z1zmxtATgg8iyf6aVTBVSqCAA7");}
+html.oldreddit:not(.r9-old) .toolbar .arrow.up {background-image:url("data:image/gif;base64,R0lGODlhDwAOAIQTAMHBwby8vNTU1M7Ozs3NzcLCwsrKytPT08DAwNzc3MfHx9jY2MjIyNvb276+vri4uLa2tr29vbe3twAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAB8ALAAAAAAPAA4AAAU44CeOZGl+wWk6UqSOgCQjbyxB8+lA/H07pYgMh5O1VLLHaxQJpJafQgEA/SgUjCqBMKgKBIfqKwQAOw==");}
+html.oldreddit:not(.r9-old) .toolbar .arrow.down {background-image:url("data:image/gif;base64,R0lGODlhDwAOAIQTAMHBwby8vNTU1M7Ozs3NzcLCwsrKytPT08DAwNzc3MfHx9jY2MjIyNvb276+vri4uLa2tr29vbe3twAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAB8ALAAAAAAPAA4AAAU44CeOZGkKwmGaBDGspaIwMFkUQD1GQaCLEskDFglCJMegJFJyQJ5IpGMFMAYRter151j+RL5vLQQAOw==");}
+html.oldreddit:not(.r9-old) .toolbar-status-bar {border-top:solid #336699 1px; border-bottom:solid #336699 1px; background-color:#F6E69F; padding:0px 2px; overflow:auto;}
+html.oldreddit:not(.r9-old) .toolbar-status-bar .login-arrow-left {overflow:auto; background-image:url("data:,"); background-position:top right;}
+html.oldreddit:not(.r9-old) .toolbar-status-bar .login-arrow-right {float:right; margin-right:75px;}
+html.oldreddit:not(.r9-old) .toolbar-status-bar .login-message {float:left; background-color:#F6E69F; padding-right:3px;}
+html.oldreddit:not(.r9-old) .tb-comments-panel-toggle {}
+html.oldreddit:not(.r9-old) .comments-panel .infobar {padding:3px 10px 7px; margin:5px 10px 10px 3px;}
+html.oldreddit:not(.r9-old) .min-body {height:100%;}
+html.oldreddit:not(.r9-old) .min-body .content {margin-top:0px; border-right:solid #369 1px; min-height:100%; max-width:60em; overflow:auto;}
+html.oldreddit:not(.r9-old) .min-body .content h1, html.oldreddit:not(.r9-old) .min-body .content h2 {padding-left:13px; display:inline-block; margin-bottom:15px;}
+html.oldreddit:not(.r9-old) .min-body .content #noresults {margin:0 0 0 13px;}
+html.oldreddit:not(.r9-old) .starkcomment + .clearleft + .starkcomment {margin-top:10px}
+html.oldreddit:not(.r9-old) .starkcomment .commentbox {color:black; background-color:#f0f0f0; padding:5px; margin-left:0px; margin-right:10px;}
+html.oldreddit:not(.r9-old) .starkcomment .tagline {text-align:right;}
+html.oldreddit:not(.r9-old) .pretty-form {font-size:larger; vertical-align:top;}
+html.oldreddit:not(.r9-old) .pretty-form p {margin:3px ;}
+html.oldreddit:not(.r9-old) .pretty-form input[type=checkbox], html.oldreddit:not(.r9-old) .pretty-form input[type=radio] {margin:2px .5em 0px .5em;}
+html.oldreddit:not(.r9-old) .pretty-form img {margin:3px .5em}
+html.oldreddit:not(.r9-old) .pretty-form input[type=text], html.oldreddit:not(.r9-old) .pretty-form textarea, html.oldreddit:not(.r9-old) .pretty-form input[type=password] {border:1px solid gray; width:300px; padding:2px;}
+html.oldreddit:not(.r9-old) .pretty-form .infobar {width:285px; margin:5px;}
+html.oldreddit:not(.r9-old) .pretty-form input[type=text], html.oldreddit:not(.r9-old) .pretty-form input[type=file], html.oldreddit:not(.r9-old) .pretty-form input[type=password], html.oldreddit:not(.r9-old) .pretty-form select, html.oldreddit:not(.r9-old) .pretty-form b, html.oldreddit:not(.r9-old) .pretty-form textarea, html.oldreddit:not(.r9-old) .pretty-form button {margin:3px .5em;}
+html.oldreddit:not(.r9-old) .pretty-form th {text-align:right}
+html.oldreddit:not(.r9-old) .pretty-form.short-text input[type=text], html.oldreddit:not(.r9-old) .pretty-form.short-text textarea, html.oldreddit:not(.r9-old) .pretty-form.short-text input[type=password] {width:2em}
+html.oldreddit:not(.r9-old) .pretty-form.medium-text input[type=text], html.oldreddit:not(.r9-old) .pretty-form.medium-text textarea, html.oldreddit:not(.r9-old) .pretty-form.medium-text input[type=password] {width:15em}
+html.oldreddit:not(.r9-old) .pretty-form.long-text input[type=text], html.oldreddit:not(.r9-old) .pretty-form.long-text textarea, html.oldreddit:not(.r9-old) .pretty-form.long-text input[type=password] {padding:2px; width: 40em}
+html.oldreddit:not(.r9-old) #passform h1 {margin:0px;}
+html.oldreddit:not(.r9-old) #passform p {font-size:smaller; color: orangered; margin-bottom: 7px}
+html.oldreddit:not(.r9-old) #passform.pretty-form button {padding:0px 1px;}
+html.oldreddit:not(.r9-old) .opt-form {font-size:larger}
+html.oldreddit:not(.r9-old) .opt-form form {display:inline;}
+html.oldreddit:not(.r9-old) .preftable th {padding:10px; font-weight:bold; vertical-align:top; text-align:right; white-space:nowrap;}
+html.oldreddit:not(.r9-old) .preftable th label {display:block;}
+html.oldreddit:not(.r9-old) .sharetable.preftable th label {display:inline;}
+html.oldreddit:not(.r9-old) .preftable th span {display:block;}
+html.oldreddit:not(.r9-old) .preftable td.prefright {padding:8px 0;}
+html.oldreddit:not(.r9-old) .preftable .spacer {margin-bottom:5px;}
+html.oldreddit:not(.r9-old) .preftable .note {width:100%; vertical-align: top; padding-top: 10px;}
+html.oldreddit:not(.r9-old) .over18 button {margin:0 10px 0 10px; padding: 5px}
+html.oldreddit:not(.r9-old) .reported {background-color:#f6e69f}
+html.oldreddit:not(.r9-old) .suspicious {background-color:#f6e69f}
+html.oldreddit:not(.r9-old) .spam {background-color:#FA8072}
+html.oldreddit:not(.r9-old) .little {font-size:smaller}
+html.oldreddit:not(.r9-old) .gray {color:gray}
+html.oldreddit:not(.r9-old) .stats {float:left; margin-right: 2em; border-collapse: collapse; font-size: larger;}
+html.oldreddit:not(.r9-old) .stats td.space {width:20px}
+html.oldreddit:not(.r9-old) .stats td.sec {padding-bottom:7px; font-size : 18px; font-weight: normal}
+html.oldreddit:not(.r9-old) .stats a {color:#369}
+html.oldreddit:not(.r9-old) .stats a:hover {text-decoration:underline;}
+html.oldreddit:not(.r9-old) .stats td.k {color:gray}
+html.oldreddit:not(.r9-old) .stats th {text-align:left; background-color: whitesmoke; color:#369; font-weight: bold;}
+html.oldreddit:not(.r9-old) .stats td.ri {padding-left:20px; text-align: right}
+html.oldreddit:not(.r9-old) .thumbnail {float:left; margin:0px 5px; overflow:hidden;}
+html.oldreddit:not(.r9-old) .stylesheet-customize-container {}
+html.oldreddit:not(.r9-old) .stylesheet-customize-container textarea {margin:0; padding: 0px;}
+html.oldreddit:not(.r9-old) .stylesheet-customize-container h2 {margin-top:15px; margin-bottom: 10px;}
+html.oldreddit:not(.r9-old) .image-upload .new-image {margin-left:20px}
+html.oldreddit:not(.r9-old) .image-upload span {padding-left:5px;}
+html.oldreddit:not(.r9-old) ul#image-preview-list {margin:20px 320px 20px 20px; font-size:larger;}
+html.oldreddit:not(.r9-old) ul#image-preview-list li {padding-bottom:10px; margin-bottom:20px; vertical-align:top; width:45%; height:100px; float:left; position:relative;}
+html.oldreddit:not(.r9-old) ul#image-preview-list .preview {width:100px; float:left; display:block; text-align:center; max-height:100px; overflow:hidden;}
+html.oldreddit:not(.r9-old) ul#image-preview-list .preview img {max-width:100px; padding:auto;}
+html.oldreddit:not(.r9-old) ul#image-preview-list .description {vertical-align:top; margin-left:105px;}
+html.oldreddit:not(.r9-old) ul#image-preview-list .description pre {display:inline; padding:5px;}
+html.oldreddit:not(.r9-old) .sheets {margin-right:315px;}
+html.oldreddit:not(.r9-old) .sheets .col {float:left;}
+html.oldreddit:not(.r9-old) .sheets .col > div {margin:0 5px;}
+html.oldreddit:not(.r9-old) .sheets .col textarea {width:100%}
+html.oldreddit:not(.r9-old) .sheets .buttons {margin-left:5px}
+html.oldreddit:not(.r9-old) .sheets .btn {margin-left:0px; margin-right: 5px;}
+html.oldreddit:not(.r9-old) .sheets .btn.right {float:right; margin-right: 3px;}
+html.oldreddit:not(.r9-old) #validation-errors {margin-left:40px; margin-top:10px; list-style-type:disc;}
+html.oldreddit:not(.r9-old) #validation-errors a, html.oldreddit:not(.r9-old) #validation-errors li, html.oldreddit:not(.r9-old) .errors h2 {color:red}
+html.oldreddit:not(.r9-old) #validation-errors a:hover {text-decoration:underline;}
+html.oldreddit:not(.r9-old) #validation-errors pre {padding:10px; color: black;}
+html.oldreddit:not(.r9-old) #preview-table {padding-right:15px;}
+html.oldreddit:not(.r9-old) #preview-table > table {border-width:.2em; border-style:dashed; border-color:lightgray; padding:5px; margin:5px; width:100%;}
+html.oldreddit:not(.r9-old) #preview-table > table > tbody > tr {padding-bottom:10px;}
+html.oldreddit:not(.r9-old) #preview-table > table > tbody > tr > td {padding:5px; padding-right: 15px;}
+html.oldreddit:not(.r9-old) #preview-table > table > tbody > tr > th {padding:5px; padding-right: 15px;}
+html.oldreddit:not(.r9-old) #preview-table > table > tbody > tr > th {font-weight:bold; vertical-align:top; font-size:larger; text-align:right;}
+html.oldreddit:not(.r9-old) #img-preview-container {border-width:.2em; border-style:dashed; border-color:lightgray; padding:5px; margin:5px; float:left;}
+html.oldreddit:not(.r9-old) .socialite.instructions ul {margin:10px; max-width:60em;}
+html.oldreddit:not(.r9-old) .socialite.instructions ul > li {list-style-type:disc; list-style-position:inside;}
+html.oldreddit:not(.r9-old) .socialite.instructions hr {color:#C6C6C6; border:none; border-top:1px solid #C6C6C6; margin:20px 0px 20px 0px; max-width:60em;}
+html.oldreddit:not(.r9-old) .socialite.instructions p.screenshot {text-align:center;}
+html.oldreddit:not(.r9-old) .socialite.instructions .logotext {line-height:32px;}
+html.oldreddit:not(.r9-old) .socialite.instructions .logotext .logo {float:left; margin-right:10px;}
+html.oldreddit:not(.r9-old) .socialite.instructions .logoclear {clear:left;}
+html.oldreddit:not(.r9-old) .socialite.instructions .features {padding-left:15px; max-width:60em;}
+html.oldreddit:not(.r9-old) .socialite .buttonclear {overflow:hidden; float:right; margin-right:20px;}
+html.oldreddit:not(.r9-old) .socialite a.installbutton {background:transparent url("data:,") no-repeat scroll top right; color:#FFF; display:block; float:left; font:bold 18px "Trebuchet MS",Helvetica,"Helvetica Neue",Arial,sans-serif; height:50px; margin-right:6px; padding-right:48px; text-decoration:none;}
+html.oldreddit:not(.r9-old) .socialite a.installbutton span {background:transparent url("data:,") no-repeat; display:block; line-height:30px; padding:10px 0 10px 17px;}
+html.oldreddit:not(.r9-old) .socialite a.installbutton:hover {background-position:bottom right;}
+html.oldreddit:not(.r9-old) .socialite a.installbutton:hover span {background-position:bottom left;}
+html.oldreddit:not(.r9-old) #sr-header-area {padding:3px 0px; background-color:#e0e0e0; white-space:nowrap; overflow:hidden; text-transform:uppercase; border-bottom:1px solid gray; font-size:90%;}
+html.oldreddit:not(.r9-old) .dropdown.srdrop .selected {background:transparent url("data:image/gif;base64,R0lGODlhFQAQAIABAICAgP///yH5BAEAAAEALAAAAAAVABAAAAIajI+py+0Po5wO2IvByzhyLWVUcI0GaKbqOhUAOw==") no-repeat scroll center right; display:inline-block; vertical-align:bottom; padding-right:21px; padding-left:5px; color:black; font-weight:normal;}
+html.oldreddit:not(.r9-old) .srdrop .choice {margin-top:3px;}
+html.oldreddit:not(.r9-old) .srdrop .choice.top-option {font-style:italic; border-bottom:1px dotted #369;}
+html.oldreddit:not(.r9-old) .srdrop .choice.bottom-option {font-style:italic; border-top:1px dotted #369;}
+html.oldreddit:not(.r9-old) #sr-bar {margin-left:10px;}
+html.oldreddit:not(.r9-old) #sr-bar .separator {color:gray;}
+html.oldreddit:not(.r9-old) #sr-bar a {color:black;}
+html.oldreddit:not(.r9-old) #sr-more-link {color:black; background-color:#e0e0e0; position:absolute; right:0px; top:3px; padding:0 5px 0 15px; font-weight:bold; margin:0 1px;}
+html.oldreddit:not(.r9-old) #sr-more-link:hover {text-decoration:underline;}
+html.oldreddit:not(.r9-old) .subscription-box {border:1px solid gray; padding:0 10px;}
+html.oldreddit:not(.r9-old) .subscription-box li {clear:left; margin-bottom:10px;}
+html.oldreddit:not(.r9-old) .subscription-box .sr-toggle-button {margin-right:5px; float:left;}
+html.oldreddit:not(.r9-old) .subscription-box .title {font-size:medium; color:blue; margin-right:5px;}
+html.oldreddit:not(.r9-old) .subscription-box h1 {text-align:center;}
+html.oldreddit:not(.r9-old) .toggle.deltranslator-button {display:inline;}
+html.oldreddit:not(.r9-old) .traffic-table {margin:10px 20px;}
+html.oldreddit:not(.r9-old) .traffic-table a:hover {text-decoration:underline;}
+html.oldreddit:not(.r9-old) .traffic-table th {font-weight:bold; text-align: center;}
+html.oldreddit:not(.r9-old) .traffic-table th, html.oldreddit:not(.r9-old) .traffic-table td {padding:0 5px;}
+html.oldreddit:not(.r9-old) .traffic-table td {text-align:right;}
+html.oldreddit:not(.r9-old) .traffic-table td.up {color:#FF8B60;}
+html.oldreddit:not(.r9-old) .traffic-table td.down {color:#336699;}
+html.oldreddit:not(.r9-old) .traffic-table td.gray {color:gray; font-style: italic;}
+html.oldreddit:not(.r9-old) .traffic-table tr.max {border:2px solid #FF8B60;}
+html.oldreddit:not(.r9-old) .traffic-table tr.min {border:2px solid #336699;}
+html.oldreddit:not(.r9-old) .traffic-table tr.odd {background-color:#E0E0E0;}
+html.oldreddit:not(.r9-old) .traffic-table tr.mean {font-style:italic; border-top: 1px solid;}
+html.oldreddit:not(.r9-old) .traffic-graph {padding:10px; border:1px solid #B0B0B0; margin-left:10px; margin-bottom:10px;}
+html.oldreddit:not(.r9-old) { background: #fff; }
+html.oldreddit body { min-height: 100vh; }
+html.oldreddit:not(.r9-old) #header-img { display: inline-block; width: 120px; height: 40px; margin-top: 2px; vertical-align: bottom; background: url("data:image/png;base64,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") 0 0 no-repeat; }
+html.oldreddit .r9-loading { color: #888; padding: 10px; font-size: small; }
+html.oldreddit:not(.r9-old) .thumbnail img { max-width: 70px; max-height: 70px; }
+html.oldreddit .expando { margin: 5px 0; max-width: 60em; }
+html.oldreddit:not(.r9-old) .expando .usertext-body { background: #fafafa; border: 1px solid #369; border-radius: 0; padding: 5px 10px; }
+html.oldreddit .r9-media { max-width: 100%; max-height: 80vh; }
+html.oldreddit .nsfw-stamp acronym { color: #ac3939; border: 1px solid #d27979; border-radius: 3px; font-size: x-small; padding: 0 2px; text-decoration: none; }
+html.oldreddit:not(.r9-old) .morechildren { margin: 5px 0 5px 15px; font-size: smaller; } html.oldreddit .morecomments a { font-weight: bold; }
+html.oldreddit:not(.r9-old) .author.submitter, html.oldreddit:not(.r9-old) .tagline .author.submitter.admin, html.oldreddit:not(.r9-old) .tagline .author.submitter.moderator { color: #fff; background: #0055df; padding: 0 2px; border-radius: 3px; }
+html.oldreddit:not(.r9-old) .infobar { background: #f6e69f; border: 1px solid orange; padding: 5px 10px; margin: 5px 305px 5px 5px; font-size: small; }
+html.oldreddit:not(.r9-old) .searchpane { margin: 5px 310px 10px 5px; padding: 8px; box-sizing: border-box; } html.oldreddit:not(.r9-old) .searchpane input[type=text] { width: 60%; margin-right: 5px; }
+html.oldreddit .md img { max-width: 100%; } html.oldreddit:not(.r9-old) .md table { border-collapse: collapse; } html.oldreddit:not(.r9-old) .md td, html.oldreddit .md th { border: 1px solid #ccc; padding: 2px 6px; }
+html.oldreddit:not(.r9-old) .md pre, html.oldreddit .md code { font-family: monospace; } html.oldreddit:not(.r9-old) .md blockquote { border-left: 2px solid #369; padding-left: 4px; margin-left: 5px; color: #4f4f4f; }
+html.oldreddit:not(.r9-old) .subreddit-info .md, html.oldreddit .raisedbox h3 a { font-size: inherit; }
+html.oldreddit .login-form-side input[type=text], html.oldreddit .login-form-side input[type=password] { box-sizing: border-box; }
+html.oldreddit:not(.r9-old) input, html.oldreddit:not(.r9-old) button, html.oldreddit select, html.oldreddit textarea { font: 12px verdana, arial, helvetica, sans-serif; }
+html.oldreddit:not(.r9-old) #search input[type=text] { font-size: 12px; }
+html.oldreddit .login-form-side .btn { font-size: 11px; }
+html.oldreddit:not(.r9-old) .expando-button { float: left; width: 23px; height: 23px; margin: 2px 5px 2px 0; border: 1px solid #c6c6c6; border-radius: 3px; background: #f0f0f0; position: relative; box-sizing: border-box; }
+html.oldreddit:not(.r9-old) .expando-button::before { content: "+"; position: absolute; inset: 0; text-align: center; font: bold 16px/20px arial, sans-serif; color: #888; }
+html.oldreddit:not(.r9-old) .expando-button.expanded::before { content: "\2013"; } html.oldreddit:not(.r9-old) .expando-button:hover { background: #e0e8f4; border-color: #5f99cf; }
+html.oldreddit .expando { clear: left; } html.oldreddit .r9-gallery .tagline { margin: 0 0 8px; } html.oldreddit video.r9-media { max-height: 70vh; background: #000; }
+html.oldreddit:not(.r9-old) .linkflairlabel, html.oldreddit:not(.r9-old) .flair { display: inline-block; font-size: x-small; color: #555; background: #f5f5f5; border: 1px solid #ddd; border-radius: 2px; padding: 0 2px; margin-right: .3em; vertical-align: middle; max-width: 16em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html.oldreddit:not(.r9-old) .stamp acronym { border: 1px solid; border-radius: 3px; font-size: x-small; padding: 0 2px; text-decoration: none; }
+html.oldreddit .spoiler-stamp acronym { color: #222; border-color: #222; } html.oldreddit .locked-stamp acronym { color: #80700a; border-color: #b3a217; }
+html.oldreddit:not(.r9-old) .thing.stickied > .entry a.title, html.oldreddit .stickied-tagline { color: #228822; } html.oldreddit:not(.r9-old) .thing.stickied > .entry a.title { font-weight: bold; }
+html.oldreddit:not(.r9-old) .author.moderator { color: #228822; font-weight: bold; } html.oldreddit:not(.r9-old) .author.admin { color: #ff0011; font-weight: bold; } html.oldreddit .userattrs { font-size: x-small; color: #888; }
+html.oldreddit .r9-awards { color: #b8860b; font-size: x-small; margin-left: .4em; }
+html.oldreddit:not(.r9-old) .r9-sub { float: right; font: bold 10px verdana, arial, sans-serif; text-transform: lowercase; padding: 1px 6px; border-radius: 3px; color: #fff; }
+html.oldreddit:not(.r9-old) .r9-sub.add { background: #4a9b3a; } html.oldreddit:not(.r9-old) .r9-sub.remove { background: #b04a3a; } html.oldreddit .users-online { color: #080; font-size: smaller; }
+html.oldreddit:not(.r9-old) .subreddit-info .md { font-size: small; max-height: none; } html.oldreddit .subreddit-info .usertext-body { margin-top: 5px; }
+html.oldreddit .r9-form, html.oldreddit .r9-newcomment { margin: 5px 0 10px 5px; } html.oldreddit .r9-form textarea { width: 500px; max-width: 95%; height: 100px; font: 13px verdana, arial, sans-serif; border: 1px solid #a9a9a9; }
+html.oldreddit .r9-form .bottom-area { margin-top: 3px; } html.oldreddit .r9-form button { margin-right: 5px; }
+html.oldreddit .r9-poll { border-collapse: collapse; margin: 5px 0; } html.oldreddit .r9-poll td { border: 1px solid #ccc; padding: 2px 8px; font-size: small; }
+html.oldreddit .deepthread a, html.oldreddit .morecomments a { font-weight: bold; font-size: smaller; }
+html.oldreddit .thing.link.saved > .entry .r9-act[data-act="unsave"] { color: #b8860b; }
+html.oldreddit:not(.r9-old) .titlebox h1.redditname { font-size: 16px; font-weight: bold; margin: 0 0 3px; } html.oldreddit:not(.r9-old) .titlebox .subscribers { display: block; font-size: x-small; color: #888; }
+html.oldreddit:not(.r9-old) .titlebox .bottom { font-size: x-small; color: #888; margin-top: 5px; } html.oldreddit .r9-usestyle input { vertical-align: middle; margin: 0 3px 0 0; }
+html.oldreddit #header-img[src] { width: auto; height: auto; max-height: 100px; background: none; }
+html.r9-old .r9-usestyle { font-size: x-small; } html.r9-old .expando-button { display: block; float: left; }
+html.r9-old .link .expando { clear: left; } html.r9-old #header-img.default-header { display: inline-block; }
+html.oldreddit:not(.r9-old) .sidecontentbox { border: 1px solid gray; padding: 5px; font-size: larger; }
+html.oldreddit:not(.r9-old) .sidecontentbox .title h1 { font-size: small; font-weight: bold; color: #336699; margin: 0 0 4px; text-transform: lowercase; }
+html.oldreddit:not(.r9-old) .sidecontentbox .content li { margin: 2px 0; font-size: small; }
+html.oldreddit:not(.r9-old) .sidecontentbox .flair { display: none; }
+html.oldreddit:not(.r9-old) .sidecontentbox .more { text-align: right; font-size: x-small; }
+html.oldreddit:not(.r9-old) .flairemoji { display: inline-block; width: 14px; height: 14px; background-size: contain; background-repeat: no-repeat; vertical-align: middle; }
+html.oldreddit:not(.r9-old) .flairrichtext { color: #555 !important; background-color: #f5f5f5 !important; border-color: #ddd !important; }
+html.oldreddit:not(.r9-old) .author + .flair { margin-left: .3em; }
+html.oldreddit .r9-media { margin: 10px 310px 10px 10px; }
+html.oldreddit .r9-media img, html.oldreddit .r9-media video { display: block; max-width: 100%; max-height: 85vh; }
+html.oldreddit .r9-media p { margin: 5px 0; font-size: small; }
+
+}
+html.oldreddit .expando[style*="display:none"], html.oldreddit .collapsed[style*="display:none"] { display: none !important; }
+html.oldreddit .drop-choices { display: none; } html.oldreddit .drop-choices.inuse { display: block; }
+
+}
